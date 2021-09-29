@@ -1,5 +1,14 @@
 import random
+import os
 from words import word_list
+
+
+def clear_terminal():
+    """
+    Clears the terminal and code sourced from:
+    http://www.coding4you.at/inf_tag/beginners_python_cheat_sheet.pdf
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def get_word():
@@ -7,36 +16,46 @@ def get_word():
     return word.upper()
 
 
+def welcome():
+    clear_terminal()
+    print("{:^70}".format(" WELCOME TO HANGMAN! "))
+    print("\n" * 6)
+    print("{:^70}".format(" 1: PLAY GAME "))
+    print("{:^70}".format(" 2: HIGH SCORES "))
+    print('\n' * 6)
+
+
 def play(word):
+    clear_terminal()
     completed_word = "_" * len(word)
     guessed = False
     guessed_letters = []
     guessed_words = []
     attempts = 7
-    print("Welcome to Hangman!")
     print(show_hangman(attempts))
     print(completed_word)
     print("\n")
     while not guessed and attempts > 0:
         guess = input("Please guess a letter or word:").upper()
-        if len(guess) == 1 and guess.fromalpha():
+        if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
-                print("You've already guessed the letter:" + guess + ".")
+                print("You've already guessed the letter: " + guess)
             elif guess not in word:
-                print("Sorry", guess, "is not the correct word.")
+                print("Sorry", guess, "is not in the word.")
                 attempts -= 1
                 guessed_letters.append(guess)
             else:
-                print("Well done!", guess, "is the correct word.")
+                print("Well done!", guess, "is in the word.")
                 guessed_letters.append(guess)
                 list_words = list(completed_word)
-                indices = [i for i, letter in enumerate(word)if letter == guess]
+                indices = [i for i, letter in enumerate(word)
+                           if letter == guess]
                 for index in indices:
                     list_words[index] = guess
                 completed_word = "".join(list_words)
                 if "_" not in completed_word:
                     guessed = True
-        elif len(guess) == len(word) and guess.fromalpha():
+        elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
                 print("You have already guessed that word", guess)
             elif guess != word:
@@ -55,7 +74,7 @@ def play(word):
         print("Congratulations, you guessed the word correctly! You Win!")
     else:
         print("Sorry, you died")
-        print("the word was" + word + "better luck next time!")
+        print("the word was " + word + " better luck next time!")
 
 
 def show_hangman(attempts):
@@ -269,3 +288,15 @@ def show_hangman(attempts):
         """
         ]
     return phases[attempts]
+
+
+def main():
+    word = get_word()
+    play(word)
+    while input("Play again? (Y/N) ").upper() == "Y":
+        word = get_word()
+        play(word)
+
+
+if __name__ == "__main__":
+    main()
