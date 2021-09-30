@@ -47,28 +47,28 @@ def get_word():
 
 def welcome_screen():
     clear_terminal()
-    print("{:^70}".format("WELCOME TO HANGMAN!"))
-    print("\n" * 6)
+    print("{:^72}".format("WELCOME TO HANGMAN!"))
+    print("\n" * 5)
     print("{:^70}".format("1: PLAY GAME"))
     print("{:^70}".format("2: HIGH SCORES"))
-    print("\n" * 6)
+    print("\n" * 5)
 
     while True:
-        welcome_screen_choice = input(" " * 25 + "Please choose an option : ")
+        welcome_screen_choice = input("  " * 11 + "Please choose an option : ")
         if welcome_screen_choice == "1":
             player_name()
         elif welcome_screen_choice == "2":
             clear_terminal()
-            print("{:^70}".format("2: HIGH SCORES"))
+            print("{:^70}".format("HIGH SCORES : "))
             print("\n")
             ordered_scores = (dict(sorted(scores[0].items(),
                               key=operator.itemgetter(1), reverse=True)[:5]))
             for key, val in ordered_scores.items():
                 print("{:^70}".format(f"{key} : {val}"))
-                print("\n" * 6)
+                print("\n" * 2)
 
             while True:
-                if input(" " * 30 +
+                if input("  " * 12 +
                          " GO BACK TO MAIN MENU?(Y) : ").upper() == "Y":
                     clear_terminal()
                     welcome_screen()
@@ -86,10 +86,11 @@ def player_name():
     print("{:^70}".format("WELCOME TO HANGMAN!"))
     print("/n" * 2)
     print(show_hangman(attempts))
+    print(letters_box)
     global player
 
     while True:
-        player = input(" " * 30 + " Please enter a Username: ").upper()
+        player = input("  " * 10 + " Please enter a Username: ").upper()
         if player.isalpha():
             results[player] = 0
             play('word')
@@ -105,8 +106,8 @@ def play(word):
     guessed_words = []
     attempts = 7
     print(show_hangman(attempts))
+    print(letters_box)
     print(completed_word)
-    print("\n")
     while not guessed and attempts > 0:
         guess = input("Please guess a letter or word: ").upper()
         if len(guess) == 1 and guess.isalpha():
@@ -116,6 +117,9 @@ def play(word):
                 print("Sorry", guess, "is not in the word.")
                 attempts -= 1
                 guessed_letters.append(guess)
+                print(show_hangman(attempts))
+                print(letters_box)
+                print("\n")
             else:
                 print("Well done!", guess, "is in the word.")
                 guessed_letters.append(guess)
@@ -124,7 +128,7 @@ def play(word):
                            if letter == guess]
                 for index in indices:
                     list_words[index] = guess
-                completed_word = "".join(list_words)
+                completed_word = "_".join(list_words)
                 if "_" not in completed_word:
                     guessed = True
         elif len(guess) == len(word) and guess.isalpha():
@@ -134,14 +138,16 @@ def play(word):
                 print("Sorry," + guess + "is not the word.")
                 attempts -= 1
                 guessed_words.append(guess)
+                print("\n")
             else:
                 guess = True
                 completed_word = word
         else:
             print("Guess is not valid, please try again.")
             print(show_hangman(attempts))
-        print(completed_word)
-        print("\n")
+            print(letters_box)
+            print(completed_word)
+            print("\n")
     if guessed:
         print("Congratulations, you guessed the word correctly! You Win!")
     else:
@@ -151,215 +157,142 @@ def play(word):
 
 def show_hangman(attempts):
     phases = [
-        """
-        +---------------------------------+
-        |                                 |
-        |             HANGMAN             |
-        |           +---------+           |
-        +---------------------------------+
-        |                |                |
-        |                |                |
-        |                O                |
-        |               /|\\              |
-        |               / \\              |
-        |          +------------+         |
-        |          |            |         |
-        +---------------------------------|
-        |        Available letters        |
-        +---------------------------------+
-        |                                 |
-        |    A B C D E F G H I J K L M    |
-        |    N O P Q R S T U V W X Y Z    |
-        |                                 |
-        +---------------------------------|
-        |         Guess The Word          |
-        +---------------------------------+
-        |  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  |
-        +---------------------------------+
-        """,
-        """
-        +---------------------------------+
-        |                                 |
-        |             HANGMAN             |
-        |           +---------+           |
-        +---------------------------------+
-        |                |                |
-        |                |                |
-        |                O                |
-        |               /|\\              |
-        |               /                 |
-        |          +------------+         |
-        |          |            |         |
-        +---------------------------------|
-        |        Available letters        |
-        +---------------------------------+
-        |                                 |
-        |    A B C D E F G H I J K L M    |
-        |    N O P Q R S T U V W X Y Z    |
-        |                                 |
-        +---------------------------------|
-        |         Guess The Word          |
-        +---------------------------------+
-        |  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  |
-        +---------------------------------+
-        """,
-        """
-        +---------------------------------+
-        |                                 |
-        |             HANGMAN             |
-        |           +---------+           |
-        +---------------------------------+
-        |                |                |
-        |                |                |
-        |                O                |
-        |               /|\\              |
-        |                                 |
-        |          +------------+         |
-        |          |            |         |
-        +---------------------------------|
-        |        Available letters        |
-        +---------------------------------+
-        |                                 |
-        |    A B C D E F G H I J K L M    |
-        |    N O P Q R S T U V W X Y Z    |
-        |                                 |
-        +---------------------------------|
-        |         Guess The Word          |
-        +---------------------------------+
-        |  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  |
-        +---------------------------------+
-        """,
-        """
-        +---------------------------------+
-        |                                 |
-        |             HANGMAN             |
-        |           +---------+           |
-        +---------------------------------+
-        |                |                |
-        |                |                |
-        |                O                |
-        |               /|                |
-        |                                 |
-        |          +------------+         |
-        |          |            |         |
-        +---------------------------------|
-        |        Available letters        |
-        +---------------------------------+
-        |                                 |
-        |    A B C D E F G H I J K L M    |
-        |    N O P Q R S T U V W X Y Z    |
-        |                                 |
-        +---------------------------------|
-        |         Guess The Word          |
-        +---------------------------------+
-        |  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  |
-        +---------------------------------+
-        """,
-        """
-        +---------------------------------+
-        |                                 |
-        |             HANGMAN             |
-        |           +---------+           |
-        +---------------------------------+
-        |                |                |
-        |                |                |
-        |                O                |
-        |                |                |
-        |                                 |
-        |          +------------+         |
-        |          |            |         |
-        +---------------------------------|
-        |        Available letters        |
-        +---------------------------------+
-        |                                 |
-        |    A B C D E F G H I J K L M    |
-        |    N O P Q R S T U V W X Y Z    |
-        |                                 |
-        +---------------------------------|
-        |         Guess The Word          |
-        +---------------------------------+
-        |  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  |
-        +---------------------------------+
-        """,
-        """
-        +---------------------------------+
-        |                                 |
-        |             HANGMAN             |
-        |           +---------+           |
-        +---------------------------------+
-        |                |                |
-        |                |                |
-        |                O                |
-        |                                 |
-        |                                 |
-        |          +------------+         |
-        |          |            |         |
-       +---------------------------------|
-        |        Available letters        |
-        +---------------------------------+
-        |                                 |
-        |    A B C D E F G H I J K L M    |
-        |    N O P Q R S T U V W X Y Z    |
-        |                                 |
-        +---------------------------------|
-        |         Guess The Word          |
-        +---------------------------------+
-        |  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  |
-        +---------------------------------+
-        """,
-        """
-        +---------------------------------+
-        |                                 |
-        |             HANGMAN             |
-        |           +---------+           |
-        |                |                |
-        |                |                |
-        |                                 |
-        |                                 |
-        |                                 |
-        |          +------------+         |
-        |          |            |         |
-        +---------------------------------|
-        |        Available letters        |
-        +---------------------------------+
-        |                                 |
-        |    A B C D E F G H I J K L M    |
-        |    N O P Q R S T U V W X Y Z    |
-        |                                 |
-        +---------------------------------|
-        |         Guess The Word          |
-        +---------------------------------+
-        |  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  |
-        +---------------------------------+
-        """,
-        """
-        +---------------------------------+
-        |                                 |
-        |             HANGMAN             |
-        |           +---------+           |
-        +---------------------------------+
-        |                                 |
-        |                                 |
-        |                                 |
-        |                                 |
-        |                                 |
-        |          +------------+         |
-        |          |            |         |
-        +---------------------------------|
-        |        Available letters        |
-        +---------------------------------+
-        |                                 |
-        |    A B C D E F G H I J K L M    |
-        |    N O P Q R S T U V W X Y Z    |
-        |                                 |
-        +---------------------------------|
-        |         Guess The Word          |
-        +---------------------------------+
-        |  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  |
-        +---------------------------------+
-        """
-        ]
+                """
+                +---------------------------------+
+                |                                 |
+                |             HANGMAN             |
+                |           +---------+           |
+                +---------------------------------+
+                |                |                |
+                |                |                |
+                |                O                |
+                |               /|\\               |
+                |               / \\               |
+                |          +------------+         |
+                |          |            |         |
+                +---------------------------------|
+                |        Available letters        |
+                +---------------------------------+""",
+                """
+                +---------------------------------+
+                |                                 |
+                |             HANGMAN             |
+                |           +---------+           |
+                +---------------------------------+
+                |                |                |
+                |                |                |
+                |                O                |
+                |               /|\\               |
+                |               /                 |
+                |          +------------+         |
+                |          |            |         |
+                +---------------------------------|
+                |        Available letters        |
+                +---------------------------------+""",
+                """
+                +---------------------------------+
+                |                                 |
+                |             HANGMAN             |
+                |           +---------+           |
+                +---------------------------------+
+                |                |                |
+                |                |                |
+                |                O                |
+                |               /|\\               |
+                |                                 |
+                |          +------------+         |
+                |          |            |         |
+                +---------------------------------|
+                |        Available letters        |
+                +---------------------------------+""",
+                """
+                +---------------------------------+
+                |                                 |
+                |             HANGMAN             |
+                |           +---------+           |
+                +---------------------------------+
+                |                |                |
+                |                |                |
+                |                O                |
+                |               /|                |
+                |                                 |
+                |          +------------+         |
+                |          |            |         |
+                +---------------------------------|
+                |        Available letters        |
+                +---------------------------------+""",
+                """
+                +---------------------------------+
+                |                                 |
+                |             HANGMAN             |
+                |           +---------+           |
+                +---------------------------------+
+                |                |                |
+                |                |                |
+                |                O                |
+                |                |                |
+                |                                 |
+                |          +------------+         |
+                |          |            |         |
+                +---------------------------------|
+                |        Available letters        |
+                +---------------------------------+""",
+                """
+                +---------------------------------+
+                |                                 |
+                |             HANGMAN             |
+                |           +---------+           |
+                +---------------------------------+
+                |                |                |
+                |                |                |
+                |                O                |
+                |                                 |
+                |                                 |
+                |          +------------+         |
+                |          |            |         |
+                +---------------------------------|
+                |        Available letters        |
+                +---------------------------------+""",
+                """
+                +---------------------------------+
+                |                                 |
+                |             HANGMAN             |
+                |           +---------+           |
+                |                |                |
+                |                |                |
+                |                                 |
+                |                                 |
+                |                                 |
+                |          +------------+         |
+                |          |            |         |
+                +---------------------------------|
+                |        Available letters        |
+                +---------------------------------+""",
+                """
+                +---------------------------------+
+                |                                 |
+                |             HANGMAN             |
+                |           +---------+           |
+                +---------------------------------+
+                |                                 |
+                |                                 |
+                |                                 |
+                |                                 |
+                |                                 |
+                |          +------------+         |
+                |          |            |         |
+                +---------------------------------|
+                |        Available letters        |
+                +---------------------------------+"""
+                ]
     return phases[attempts]
+
+
+letters_box = """                |    A B C D E F G H I J K L M    |
+                |    N O P Q R S T U V W X Y Z    |
+                |                                 |
+                +---------------------------------+
+    """
 
 
 def main():
@@ -368,6 +301,10 @@ def main():
     while input("Play again? (Y/N) ").upper() == "Y":
         word = get_word()
         play(word)
+        welcome_screen()
+
+
+welcome_screen()
 
 
 if __name__ == "__main__":
