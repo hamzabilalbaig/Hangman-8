@@ -20,6 +20,7 @@ SHEET = GSPREAD_CLIENT.open('hangman')
 
 high_scores = SHEET.worksheet('highscores')
 scores = high_scores.get_all_records()
+results = {}
 
 
 def clear_terminal():
@@ -30,6 +31,15 @@ def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
+def update_highscores_sheet():
+
+    keys = [str(eachvalue) for eachvalue in scores[0].keys()]
+    values = [str(eachvalue) for eachvalue in scores[0].values()]
+    update_results = [{'range': 'A1:Z1', 'values': [keys]},
+                      {'range': 'A2:Z2', 'values': [values]}]
+    high_scores.batch_update(update_results)
+
+
 def get_word():
     word = random.choice(word_list)
     return word.upper()
@@ -37,10 +47,10 @@ def get_word():
 
 def welcome_screen():
     clear_terminal()
-    print("{:^70}".format(" WELCOME TO HANGMAN! "))
+    print("{:^70}".format("WELCOME TO HANGMAN!"))
     print("\n" * 6)
-    print("{:^70}".format(" 1: PLAY GAME "))
-    print("{:^70}".format(" 2: HIGH SCORES "))
+    print("{:^70}".format("1: PLAY GAME"))
+    print("{:^70}".format("2: HIGH SCORES"))
     print("\n" * 6)
 
     while True:
@@ -49,10 +59,10 @@ def welcome_screen():
             player_name()
         elif welcome_screen_choice == "2":
             clear_terminal()
-            print("{:^70}".format(" 2: HIGH SCORES "))
+            print("{:^70}".format("2: HIGH SCORES"))
             print("\n")
             ordered_scores = (dict(sorted(scores[0].items(),
-                              key=operator.itemgetter(1), reverse=True[:5])))
+                              key=operator.itemgetter(1), reverse=True)[:5]))
             for key, val in ordered_scores.items():
                 print("{:^70}".format(f"{key} : {val}"))
                 print("\n" * 6)
@@ -67,13 +77,13 @@ def welcome_screen():
         elif welcome_screen_choice == "3":
             sys.exit()
         else:
-            print("{:^70}".format("Please Choose 1 or 2"))
+            print("{:^70}".format("Please Choose option 1 or 2"))
 
 
 def player_name():
     clear_terminal()
     attempts = 0
-    print("{:^70}".format(" WELCOME TO HANGMAN! "))
+    print("{:^70}".format("WELCOME TO HANGMAN!"))
     print("/n" * 2)
     print(show_hangman(attempts))
     global player
@@ -81,7 +91,7 @@ def player_name():
     while True:
         player = input(" " * 30 + " Please enter a Username: ").upper()
         if player.isalpha():
-            game_score[player] = 0
+            results[player] = 0
             play('word')
         else:
             print("{:^70}".format("Please use letters only"))
@@ -98,7 +108,7 @@ def play(word):
     print(completed_word)
     print("\n")
     while not guessed and attempts > 0:
-        guess = input("Please guess a letter or word:").upper()
+        guess = input("Please guess a letter or word: ").upper()
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
                 print("You've already guessed the letter: " + guess)
