@@ -20,7 +20,7 @@ SHEET = GSPREAD_CLIENT.open('hangman')
 
 high_scores = SHEET.worksheet('highscores')
 scores = high_scores.get_all_records()
-results = {}
+game_results = {}
 
 
 def clear_terminal():
@@ -51,6 +51,7 @@ def welcome_screen():
     print("\n" * 5)
     print("{:^70}".format("1: PLAY GAME"))
     print("{:^70}".format("2: HIGH SCORES"))
+    print("{:^70}".format("3: EXIT"))
     print("\n" * 5)
 
     while True:
@@ -75,16 +76,17 @@ def welcome_screen():
                 else:
                     print("{:^70}".format("Please Try Again"))
         elif welcome_screen_choice == "3":
+            clear_terminal()
             sys.exit()
         else:
-            print("{:^70}".format("Please Choose option 1 or 2"))
+            print("{:^70}".format("Please Choose option 1, 2 or 3"))
 
 
 def player_name():
     clear_terminal()
     attempts = 0
     print("{:^70}".format("WELCOME TO HANGMAN!"))
-    print("/n" * 2)
+    print("\n")
     print(show_hangman(attempts))
     print(letters_box)
     global player
@@ -92,7 +94,7 @@ def player_name():
     while True:
         player = input("  " * 10 + " Please enter a Username: ").upper()
         if player.isalpha():
-            results[player] = 0
+            game_results[player] = 0
             play('word')
         else:
             print("{:^70}".format("Please use letters only"))
@@ -100,6 +102,7 @@ def player_name():
 
 def play(word):
     clear_terminal()
+    word = get_word()
     completed_word = "_" * len(word)
     guessed = False
     guessed_letters = []
@@ -149,10 +152,42 @@ def play(word):
             print(completed_word)
             print("\n")
     if guessed:
-        print("Congratulations, you guessed the word correctly! You Win!")
+        clear_terminal()
+        print("Congratulations ," + player +
+              " you guessed the word correctly! You Win!")
+
+        while True:
+            play_again_after_win = input('  ' * 10 +
+                                         ' Play Again? ( Y / N ) : ').upper()
+            if play_again_after_win == 'Y':
+                game_results[player] += 1
+                play('word')
+            elif play_again_after_win == 'N':
+                game_results[player] += 1
+                if player not in scores[0].keys():
+                    scores[0][player] = game_results[player]
+                    update_highscores_sheet()
+                    welcome_screen()
+                elif game_results[player] > scores[0][player]:
+                    scores[0][player] = game_results[player]
+                    update_highscores_sheet()
+                    welcome_screen()
+                else:
+                    welcome_screen()
+
     else:
-        print("Sorry, you died")
-        print("the word was " + word + " better luck next time!")
+        print("Sorry " + player + ", you died")
+        print("the word was " + word + ", better luck next time!")
+
+        while True:
+            play_again_after_lose = input('  ' * 10 +
+                                          ' Play Again? ( Y / N ) : ').upper()
+            if play_again_after_lose == 'Y':
+                play('word')
+            elif play_again_after_lose == 'N':
+                welcome_screen()
+            else:
+                print('{:^70}'.format(' Please choose option Y or N '))
 
 
 def show_hangman(attempts):
