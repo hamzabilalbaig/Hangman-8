@@ -140,6 +140,7 @@ def play(word, letters_box):
     print(letters_box2)
     print(completed_word)
     while not guessed and attempts > 0:
+        clear_terminal()
         guess = input("Please guess a letter or word: ").upper()
         if len(guess) == len(word):
             if check_if_guess_in_word(guess, word) is False:
@@ -164,7 +165,6 @@ def play(word, letters_box):
                     letters_box2 = letters_box2.replace(guess.upper(), '*')
                 if check_if_guess_in_word(guess, completed_word) is False:
                     attempts -= 1
-        clear_terminal()
         print(show_hangman(attempts))
         print(letters_box2)
         print(completed_word)
