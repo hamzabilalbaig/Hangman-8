@@ -90,13 +90,13 @@ def welcome_screen():
 def player_name():
     clear_terminal()
     attempts = 0
-    print("{:^74}".format("WELCOME TO HANGMAN!"))
+    print("{:^78}".format("WELCOME TO HANGMAN!"))
     print(show_hangman(attempts))
     print(letters_box)
     global player
     letters_box2 = letters_box
     while True:
-        player = input("  " * 14 + " Please enter a Username: ").upper()
+        player = input("  " * 12 + " Please enter a Username: ").upper()
         if player.isalpha():
             game_results[player] = 0
             play(get_word(), letters_box2)
