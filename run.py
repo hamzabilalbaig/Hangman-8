@@ -5,6 +5,7 @@ import operator
 
 import gspread
 from google.oauth2.service_account import Credentials
+
 from words import word_list
 
 
@@ -90,7 +91,6 @@ def player_name():
     clear_terminal()
     attempts = 0
     print("{:^70}".format("WELCOME TO HANGMAN!"))
-    print("\n")
     print(show_hangman(attempts))
     print(letters_box)
     global player
@@ -164,10 +164,10 @@ def play(word, letters_box):
                     letters_box2 = letters_box2.replace(guess.upper(), '*')
                 if check_if_guess_in_word(guess, completed_word) is False:
                     attempts -= 1
+        clear_terminal()
         print(show_hangman(attempts))
         print(letters_box2)
         print(completed_word)
-        print("\n")
     if guessed:
         clear_terminal()
         print("Congratulations! " + player +
@@ -211,7 +211,6 @@ def show_hangman(attempts):
     phases = [
                 """
                 +---------------------------------+
-                |                                 |
                 |             HANGMAN             |
                 |           +---------+           |
                 +---------------------------------+
@@ -227,7 +226,6 @@ def show_hangman(attempts):
                 +---------------------------------+""",
                 """
                 +---------------------------------+
-                |                                 |
                 |             HANGMAN             |
                 |           +---------+           |
                 +---------------------------------+
@@ -243,7 +241,6 @@ def show_hangman(attempts):
                 +---------------------------------+""",
                 """
                 +---------------------------------+
-                |                                 |
                 |             HANGMAN             |
                 |           +---------+           |
                 +---------------------------------+
@@ -259,7 +256,6 @@ def show_hangman(attempts):
                 +---------------------------------+""",
                 """
                 +---------------------------------+
-                |                                 |
                 |             HANGMAN             |
                 |           +---------+           |
                 +---------------------------------+
@@ -275,7 +271,6 @@ def show_hangman(attempts):
                 +---------------------------------+""",
                 """
                 +---------------------------------+
-                |                                 |
                 |             HANGMAN             |
                 |           +---------+           |
                 +---------------------------------+
@@ -291,7 +286,6 @@ def show_hangman(attempts):
                 +---------------------------------+""",
                 """
                 +---------------------------------+
-                |                                 |
                 |             HANGMAN             |
                 |           +---------+           |
                 +---------------------------------+
@@ -307,7 +301,6 @@ def show_hangman(attempts):
                 +---------------------------------+""",
                 """
                 +---------------------------------+
-                |                                 |
                 |             HANGMAN             |
                 |           +---------+           |
                 +---------------------------------+
@@ -323,7 +316,6 @@ def show_hangman(attempts):
                 +---------------------------------+""",
                 """
                 +---------------------------------+
-                |                                 |
                 |             HANGMAN             |
                 |           +---------+           |
                 +---------------------------------+
