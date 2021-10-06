@@ -142,26 +142,21 @@ def play(word, letters_box):
     while not guessed and attempts > 0:
         guess = input("Please guess a letter or word: ").upper()
         if len(guess) == len(word):
-            clear_terminal()
             if check_if_guess_in_word(guess, word) is False:
-                clear_terminal()
                 print("Sorry " + guess + " is not the word.")
                 attempts -= 1
             else:
-                clear_terminal()
                 guessed = True
         else:
             if validate_guess(guess, guessed_letters):
                 guessed_letters.append(guess)
                 letters_box2 = letters_box2.replace(guess.upper(), '*')
                 if check_if_guess_in_word(guess, word):
-                    clear_terminal()
                     completed_word = replace_guess(word, completed_word, guess)
                     print("Well done!", guess, "is in the word.")
                     if completed_word.upper() == word.upper():
                         guessed = True
                 else:
-                    clear_terminal()
                     print("Sorry " + guess + " is not in the word.")
                     attempts -= 1
             else:
