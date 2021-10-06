@@ -96,7 +96,7 @@ def player_name():
     global player
     letters_box2 = letters_box
     while True:
-        player = input("  " * 12 + " Please enter a Username: ").upper()
+        player = input("  " * 10 + " Please enter a Username: ").upper()
         if player.isalpha():
             game_results[player] = 0
             play(get_word(), letters_box2)
