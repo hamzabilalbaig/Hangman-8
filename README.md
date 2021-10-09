@@ -1,5 +1,5 @@
 <img src="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/Responsive_screen.jpg">
-[Click here to go to the live version of my Project.](https://antonydavidtroy-hangman.herokuapp.com//)
+[Click here to go to the live version of my Project.](https://antonydavidtroy-hangman.herokuapp.com/)
 
 # HANGMAN
 
@@ -17,13 +17,13 @@ Users will be greeted by the welcome screen, they can choose from 3 options. Fir
 2. [**Existing Features**](#existing-features)
       - [**Welcome Screen**](#welcome-screen)
       - [**Highscores Screen**](#highscores-screen)
-      - [**Username-Screen**](#username-screen)
+      - [**Username Screen**](#username-screen)
       - [**Guessing Screen**](#guessing-screen)
       - [**Incorrect Letter Screen**](#incorrect-letter-screen)
       - [**Correct Letter Screen**](#correct-letter-screen)
       - [**Invalid Guess**](#invalid-guess)
       - [**Repeated Guess**](#repeated-guess)
-      - [**Display of Hangman**](#display-guess)
+      - [**Display of Hangman**](#display-of-hangman)
       - [**Win Screen**](#win-screen)
       - [**Lose Screen**](#lose-screen)
       - [**Features Left To Implement**](#features-left-to-implement)
@@ -67,7 +67,7 @@ When the User has either wins or loses, they will have the option to play again,
 ## Existing Features
 
 #### Welcome Screen
-<img src"https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/hangman_welcome_screen.jpg">
+<img src="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/hangman_welcome_screen.jpg">
  - The welcome screen shows a small title at the top to show the User what game the User will be playing with a menu bar that is central in the screen.
  - The welcome screen shows a simple screen with 3 option to either play the game, check the highscores or exit the high scores.
  - The welcome screen asks the User for an input, if the User enters an invalid option, the game will let the User know that their options are either 1, 2 or 3.
@@ -125,7 +125,7 @@ When the User has either wins or loses, they will have the option to play again,
 ## Technology Used
 
 ##### Languages Used
- - [PYTHON](https://en.wikipedia.org/wiki/Python_(programming_language)
+ - [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
  
 #### Frameworks, Libraries & Programs Used
 
