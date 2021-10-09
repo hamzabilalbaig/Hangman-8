@@ -39,6 +39,8 @@ Users will be greeted by the welcome screen, they can choose from 3 options. Fir
       - [**Further Testing**](#further-testing)
       - [**Issues**](#issues)
 5. [**Deployment**](#deployment)
+      - [**Heroku**](#heroku)
+6. [**Credits**](#credits)
        
 ## How to play
 
@@ -203,7 +205,7 @@ When the User has either wins or loses, they will have the option to play again,
 
 ## Deployment
 
-- Heroku
+#### Heroku
 
    - Fork or clone this repository.
    - Goto the Heroku Dashboard.
