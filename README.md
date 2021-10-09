@@ -169,9 +169,6 @@ When the User has either wins or loses, they will have the option to play again,
  - Checked that symbols, numbers or empty spaces will come up as invalid guesses when guessing the word.
 
 #### Testing User Stories from User Experience (UX) Section
- - 
-
-#### Further Testing
 
  - First Time User Goals. 
    - As a First Time Visitor, I want to easily navigate through the game with simple inputs.
@@ -211,7 +208,7 @@ When the User has either wins or loses, they will have the option to play again,
    - Goto the Heroku Dashboard.
    - Click New.
    - Select to create a new app.
-   - Set the buildbacks to Python and NodeJs in that order.
+   - Set the buildbacks to Python and NodeJS in that order.
    - Link the Heroku app to the repository.
    - Click on Deploy.
 
