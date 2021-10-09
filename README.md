@@ -31,7 +31,14 @@ Users will be greeted by the welcome screen, they can choose from 3 options. Fir
       
 3. [**Technology Used**](#technology-used)
     - [**Languages Used**](#languages-used)
-    - [**Frameworks, Libraries & Programs Used**](#frameworks,-libraries-&-programs-used)   
+    - [**Frameworks, Libraries & Programs Used**](#frameworks,-libraries-&-programs-used)
+ 
+4. [**Testing**](#testing)
+      - [**Validator Testing**](#validator-testing)
+      - [**Testing User Stories from User Experience (UX) Section**](#testing-user-stories-from-user-experience-(UX)-section)
+      - [**Further Testing**](#further-testing)
+      - [**Issues**](#issues)
+5. [**Deployment**](#deployment)
        
 ## How to play
 
@@ -57,7 +64,7 @@ When the User has either wins or loses, they will have the option to play again,
    4. As a Returning Visitor, I want to be able to play with a friend to see who gets a higher score.
      
  - Frequent User Goals.
-   1. As a Frequent User, I want to be able to be able to notice different still being guessed.
+   1. As a Frequent User, I want to be able to notice different words still being guessed.
    2. As a Frequent User, I want the navigation to be the same throughout.
 
 
@@ -127,7 +134,8 @@ When the User has either wins or loses, they will have the option to play again,
 #### Features Left To Implement
 - Possibly could add a two player game so that 2 players could have the same word and take it in turn to guess the word, but will have their own hangman display to their Username.
 - Possibly could add an option where the User could input words into the game when playing multiple player modes.
-- possibly different levels to the game, e.g easy = up to 4 letter words, normal = 5 - 6 letter words or hard = 7+ letter words.
+- Possibly different levels to the game, e.g easy = up to 4 letter words, normal = 5 - 6 letter words or hard = 7+ letter words.
+- Possibly reset the Highscores every month to let new and frequent Users be more inclined to play.
 
 
 ## Technology Used
@@ -145,5 +153,68 @@ When the User has either wins or loses, they will have the option to play again,
     - Lucidchart is used to create and store flowcharts.
 - [Heroku](https://www.heroku.com) 
     - Heroku is used to build, run and scale applications in a similar manner across most languages.
-- [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/)
+- [Google Sheets](https://docs.google.com/spreadsheets/u/0/)
     - Google Sheets is an online spreadsheet app that lets you create and format spreadsheets that you can use work along side websites and programs, you can also use them to work with other people.
+
+## Testing
+
+#### Validator Testing
+ - PEP8 Python Validator 
+       - No errors were returned when passing through PEP8 - [Website here](http://pep8online.com/)
+ - Checked highscores would update if I changed them in the googlesheets doc.
+ - Checked that when I get a score of 2 that it would update automatically in the googlesheets doc.
+ - Tested the code in the Code Institute Heroku terminal and also the terminal inside of Gitpod.
+ - Checked that symbols, numbers or empty spaces will come up as invalid guesses when guessing the word.
+
+#### Testing User Stories from User Experience (UX) Section
+ - 
+
+#### Further Testing
+
+ - First Time User Goals. 
+   - As a First Time Visitor, I want to easily navigate through the game with simple inputs.
+         1. From start to finish you are easily navigating your way through the game with such simple inpus of a single letter.
+   - As a First Time Visitor, I want to be able to have fun, enjoy the game and feel nostalgic when playing.
+         1. When the User is playing the game, the User will notice the game is designed and played in the same way when it was orginally created. Only difference is that the it's automatically updating for the User.
+   - As a First Time Visitor, I want to be able to attempt to beat any Highscores.
+         1. Once the User has seen that the current highscores are low, they'll be encourage to beat it, if the highscore is reset on a regular basis(monthly for example). The User will want to be first on the highscore or beat the few that could possibly on there.
+   - As a First Time Visitor, I want to be able to make sure I dont get any repeated words.
+         1. There are 100's of words in the game so when the User keeps playing again or resetting the browser page, it is very unlikely that they'll get the same word twice, by the time a word is repeated the User will most likely have forgotten it as there are too many to remember, also have to take in consideration what letters the User would have guessed the games before and their current game as their gameplay could result differently.
+ 
+ - Returning Visitor Goals.
+   - As a Returning Visitor, I want to be able to check and see the updated Highscores and be able to try to beat any again.
+         1. As a Returning Visitor, the User will be able to easily check and see the updated scores through the Highcores. The User will then be able to decide whether they would like to attempt to beat any scores on there.
+   - As a Returning Visitor, I want the navigation to be the same as it was the first time to keep it familiar.
+         1. As a Returning Visitor, the User, will be able to notice that the Display and the mechanics of the game are unchanged.
+   - As a Returning Visitor, I want the be able to guess different words that I haven't guessed before.
+         1. As a Returning Visitor,  The User will have 100's of words that are randomized so that the User will most likely not get the same word for a very long time.
+   - As a Returning Visitor, I want to be able to play with a friend to see who gets a higher score.
+         1. As a Returning Visitor, the User will be able to check the Highscore to see if their or their friends are on the Highscore, then decide to attempt to beat it.
+     
+ - Frequent User Goals.
+   - As a Frequent User, I want to be able to notice different words still being guessed.
+         1. As a Frequent User, the User will be able to still play the game and not being repeated words for a very long time, due to being too many to remember, different letters could be guessed in an order that was different to when the User first played that word.
+   - As a Frequent User, I want the navigation to be the same throughout.
+         1. As a Frequent User, the User will see the consistency of style and navigation and mechanics of the game to keep familarized with the game.
+#### Issues
+ - After Deployment and the basic Python coding for the game, I kept getting a new word added onto the current word that had to be guessed when I guessed a letter incorrect.
+ - The second issue I had with this was that I could not figure out when I guessed the whole word it kept coming up as an invalid guess.(e.g guessing apple for _apple).
+ - I struggled figuring out a function that would delete or replace the letter in the Available letters box when guessed.
+
+## Deployment
+
+- Heroku
+
+   - Fork or clone this repository.
+   - Goto the Heroku Dashboard.
+   - Click New.
+   - Select to create a new app.
+   - Set the buildbacks to Python and NodeJs in that order.
+   - Link the Heroku app to the repository.
+   - Click on Deploy.
+
+#### Credits 
+
+ - Watched a few videos on how to implement desired functions on www.youtube.co.uk/
+ - My Mentor for continuous helpful feedback, ideas and help when strugglng with parts of my code.
+ - Slack community for information and also the few that helped me with the install of gspread errors that I kept getting. 
