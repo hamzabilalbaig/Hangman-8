@@ -1,5 +1,6 @@
 <img src="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/Responsive_screen.jpg">
-[Click here to go to the live version of my Project.](https://antonydavidtroy-hangman.herokuapp.com/)
+
+[View the live project here.](https://antonydavidtroy-hangman.herokuapp.com/)
 
 # HANGMAN
 
@@ -62,12 +63,13 @@ When the User has either wins or loses, they will have the option to play again,
 
 
 #### Flowchart
-<img scr="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/Hangman.jpeg">
+<img src="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/Hangman.jpeg">
  
 ## Existing Features
 
 #### Welcome Screen
 <img src="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/hangman_welcome_screen.jpg">
+<img src="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/hangman_invalid_option_welcome_screen.jpg">
  - The welcome screen shows a small title at the top to show the User what game the User will be playing with a menu bar that is central in the screen.
  - The welcome screen shows a simple screen with 3 option to either play the game, check the highscores or exit the high scores.
  - The welcome screen asks the User for an input, if the User enters an invalid option, the game will let the User know that their options are either 1, 2 or 3.
@@ -90,11 +92,14 @@ When the User has either wins or loses, they will have the option to play again,
 
 #### Incorrect Letter Screen
 <img src="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/hangman_incorrect_guess.jpg">
+ - when the Users guess is valid but is not in the word, they are greeted with text stating that their guess was not in the word, therefore being incorrect they User will lose a life/guess and will display the next stage of hangman.
 
 #### Correct Letter Screen
 <img src="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/hangman_correct_guess.jpg">
 
 #### Invalid Guess
+<img src="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/hangman_invalid_guess.jpg">
+ - When the Users guess is invalid, they are are greeted with text stating that their guess is not valid(not a letter).
 
 #### Repeated Guess
 <img src="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/hangman_repeated_guess.jpg">
