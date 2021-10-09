@@ -93,9 +93,12 @@ When the User has either wins or loses, they will have the option to play again,
 #### Incorrect Letter Screen
 <img src="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/hangman_incorrect_guess.jpg">
  - when the Users guess is valid but is not in the word, they are greeted with text stating that their guess was not in the word, therefore being incorrect they User will lose a life/guess and will display the next stage of hangman.
+ - When the Users guess is valid but incorrect, it will also change the same letter in the hangman display that the User has guessed with a " * " to let the users see what they have guessed throughout the game. 
 
 #### Correct Letter Screen
 <img src="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/hangman_correct_guess.jpg">
+ - When the Users guess is valid and also correct, they are greeted with text praising them and stating that their guess is in the word. 
+ - When the Users guess is valid and correct, it will also change the same letter in the hangman display that the User has guessed with a " * " to let the users see what they have guessed throughout the game. 
 
 #### Invalid Guess
 <img src="https://github.com/AntonyDavidTroy/Hangman/blob/main/readme_images/hangman_invalid_guess.jpg">
