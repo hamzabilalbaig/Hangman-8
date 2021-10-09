@@ -1,10 +1,12 @@
+![](readme_images/Responsive_screen.jpg)
+[Click here to go to the live version of my Project.](https://antonydavidtroy-hangman.herokuapp.com//)
+
 # HANGMAN
 
 For my portfolio 3 project I have choosen the fun, well known game known as Hangman. I have displayed Hangman in a Python terminal game, which runs through the Code Institute terminal on Heroku.
 
 Users will be greeted by the welcome screen, they can choose from 3 options. First option will start the game, from there the User will be prompt an 'Enter a username', after entering a username the User will be prompt with the image of code that shows the first stage of the hangman which will increase up to 6 more times for each incorrect guess along with the random word that has been chosen which will be displayed with a " _ " for each letter in that word. Everytime the User gets a guessed letter correct, the letter will appear in place of the " _ " until the User either gets the word correct or runs out of guesses. Once the User has run out of 'lives' The game will display the last stage of hangman which will show a stickman being 'hung' on a platform. When that shows the User will be able to either, play again, or save their Username and Score to the googlesheets.  The second option will display the Highscores leaderboard which will consists of the top 5 scores along with their Username, which can be updated from all Users that play the game just as long as they can beat any of their scores.
 
-[Click here to go to the live version of my Project.](https://antonydavidtroy-hangman.herokuapp.com//)
 
 
 ## How to play
