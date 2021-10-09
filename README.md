@@ -145,4 +145,5 @@ When the User has either wins or loses, they will have the option to play again,
     - Lucidchart is used to create and store flowcharts.
 - [Heroku](https://www.heroku.com) 
     - Heroku is used to build, run and scale applications in a similar manner across most languages.
-
+- [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/)
+    - Google Sheets is an online spreadsheet app that lets you create and format spreadsheets that you can use work along side websites and programs, you can also use them to work with other people.
